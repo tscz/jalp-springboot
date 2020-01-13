@@ -1,9 +1,5 @@
-apply from: "${rootDir}/gradle/spring-boot-platform.gradle"
-
-dependencies {
-	compile project(':spring-boot-platform')
-}
+apply from: "${rootDir}/gradle/jalp.gradle"
 
 springBoot {
-    mainClassName = 'com.jalp.server.JalpApplication'
+    mainClassName = 'com.github.tscz.jalp.JalpApplication'
 }

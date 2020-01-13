@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -Dserver.port=$PORT -jar build/libs/spring-boot-platform-*.jar
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar jalp/build/libs/com.jalp-*.jar

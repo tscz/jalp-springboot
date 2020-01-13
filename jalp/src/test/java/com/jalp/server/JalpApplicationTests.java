@@ -26,12 +26,13 @@ import org.zalando.problem.spring.web.advice.validation.ConstraintViolationProbl
 
 import com.github.tscz.spring.platform.jwt.JwtRequest;
 import com.github.tscz.spring.platform.jwt.JwtResponse;
-import com.jalp.server.vocable.Vocable;
-import com.jalp.server.vocable.VocableRepository;
+import com.github.tscz.jalp.JalpApplication;
+import com.github.tscz.jalp.vocable.Vocable;
+import com.github.tscz.jalp.vocable.VocableRepository;
 
 import net.javacrumbs.jsonunit.core.Option;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = JalpApplication.class)
 public class JalpApplicationTests {
 
 	@Autowired

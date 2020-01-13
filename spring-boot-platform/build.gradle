@@ -1,5 +1,0 @@
-apply from: "${rootDir}/gradle/spring-boot-platform.gradle"
-
-jar {
-  enabled=true
-}

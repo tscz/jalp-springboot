@@ -1,4 +1,3 @@
 rootProject.name = 'jalp-complete'
 
-include 'spring-boot-platform'
 include 'jalp'

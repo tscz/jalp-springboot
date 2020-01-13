@@ -9,8 +9,8 @@ buildscript {
 
   repositories {
     maven { url "https://repo.spring.io/plugins-release" }
-    maven { url "http://repo.spring.io/libs-release" }
-    maven { url "http://repo.spring.io/libs-milestone" }
+    maven { url "https://repo.spring.io/libs-release" }
+    maven { url "https://repo.spring.io/libs-milestone" }
     maven { url "https://plugins.gradle.org/m2/" }
 	gradlePluginPortal()
     mavenCentral()
@@ -28,11 +28,18 @@ allprojects {
 		maven { url("https://plugins.gradle.org/m2/") }
 		maven { url 'https://repo.spring.io/snapshot' }
 		maven { url 'https://repo.spring.io/milestone' }
+		maven {
+			url uri("https://maven.pkg.github.com/tscz/spring-boot-platform")
+			credentials {
+				username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+				password = project.findProperty("gpr.key") ?: System.getenv("PASSWORD")
+			}
+		 }
 	}
 }
 
 subprojects {
-	group = 'com.jalp'
+	group = 'com.github.tscz.jalp'
 	version = '0.0.1-SNAPSHOT'
 	
 	apply plugin: "java"
@@ -49,7 +56,6 @@ subprojects {
 		useJUnitPlatform()
 	}
 	
-	apply from: file("$rootProject.projectDir/gradle/heroku/stage.gradle")
 }
 
 jacocoTestReport {
