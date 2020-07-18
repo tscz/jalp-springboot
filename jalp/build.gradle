@@ -1,4 +1,13 @@
-apply from: "${rootDir}/gradle/jalp.gradle"
+plugins {
+    id "java"
+    id "org.springframework.boot"
+	id "io.spring.dependency-management"
+    id "org.asciidoctor.jvm.convert"
+}
+
+dependencies {
+	implementation libraries.spring_boot_platform_starter
+}
 
 springBoot {
     mainClassName = 'com.github.tscz.jalp.JalpApplication'

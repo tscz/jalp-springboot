@@ -1,6 +1,6 @@
 ext {
   versions = [
-	spring_boot_platform: "0.0.4",
+	spring_boot_platform: "0.0.6",
 	spring_boot: "2.3.1.RELEASE",
   ]
   testVersions = [
@@ -14,15 +14,9 @@ ext {
     jacoco: "0.8.4",
   ]
   libraries = [
-    spring_boot_platform: "com.github.tscz.spring.platform:spring-boot-platform:${versions.spring_boot_platform}",
+    spring_boot_platform_starter: "com.github.tscz.spring.platform:spring-boot-platform-starter:${versions.spring_boot_platform}",
   ]
-  testLibraries = [
-    h2: "com.h2database:h2:${testVersions.h2}",
-    httpclient: "org.apache.httpcomponents:httpclient:${testVersions.httpclient}",
-    jsonassert: "net.javacrumbs.json-unit:json-unit-assertj:${testVersions.jsonassert}",
-    spring_security_test: "org.springframework.security:spring-security-test",
-    spring_boot_starter_test: "org.springframework.boot:spring-boot-starter-test",
-  ]
+  testLibraries = [  ]
   gradlePlugins = [
 	  asciidoc: "org.asciidoctor:asciidoctor-gradle-jvm:${pluginVersions.asciidoc}",
     coveralls: "gradle.plugin.com.github.kt3k.coveralls:coveralls-gradle-plugin:${pluginVersions.coveralls}",
