@@ -1,17 +1,12 @@
 ext {
   versions = [
-    guava: "28.0-jre",
-  	jjwt: "0.10.7",
-  	postgres: "42.2.6",
-  	problem: "0.23.0",
-	spring: "5.2.2.RELEASE",
-	spring_boot: "2.2.2.RELEASE",
-	spring_boot_platform: "0.0.2"
+	spring_boot_platform: "0.0.4",
+	spring_boot: "2.3.1.RELEASE",
   ]
   testVersions = [
   	jsonassert: "2.8.0",
   	h2: "1.4.200",
-  	httpclient: "4.5.10",
+  	httpclient: "4.5.12",
   ]
   pluginVersions = [
     asciidoc: "2.3.0",
@@ -19,17 +14,6 @@ ext {
     jacoco: "0.8.4",
   ]
   libraries = [
-    guava: "com.google.guava:guava:${versions.guava}",
-    jjwt_api: "io.jsonwebtoken:jjwt-api:${versions.jjwt}",
-    jjwt_runtime: [
-    	"io.jsonwebtoken:jjwt-impl:${versions.jjwt}",
-    	"io.jsonwebtoken:jjwt-jackson:${versions.jjwt}",
-    ],
-    postgres: "org.postgresql:postgresql:${versions.postgres}",
-    problem: "org.zalando:problem-spring-web:${versions.problem}",
-    spring_boot_starter_jpa: "org.springframework.boot:spring-boot-starter-data-jpa",
-    spring_boot_starter_security: "org.springframework.boot:spring-boot-starter-security",
-    spring_boot_starter_web: "org.springframework.boot:spring-boot-starter-web",
     spring_boot_platform: "com.github.tscz.spring.platform:spring-boot-platform:${versions.spring_boot_platform}",
   ]
   testLibraries = [
@@ -40,8 +24,8 @@ ext {
     spring_boot_starter_test: "org.springframework.boot:spring-boot-starter-test",
   ]
   gradlePlugins = [
-	asciidoc: "org.asciidoctor:asciidoctor-gradle-jvm:${pluginVersions.asciidoc}",
+	  asciidoc: "org.asciidoctor:asciidoctor-gradle-jvm:${pluginVersions.asciidoc}",
     coveralls: "gradle.plugin.com.github.kt3k.coveralls:coveralls-gradle-plugin:${pluginVersions.coveralls}",
-	spring_boot: "org.springframework.boot:spring-boot-gradle-plugin:${versions.spring_boot}",	
+	  spring_boot: "org.springframework.boot:spring-boot-gradle-plugin:${versions.spring_boot}",	
   ]
 }
