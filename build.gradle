@@ -5,7 +5,7 @@ apply plugin: 'org.asciidoctor.jvm.convert'
 apply plugin: 'org.asciidoctor.jvm.pdf'
 
 buildscript {
-  apply from: "${rootDir}/gradle/dependencies.gradle"
+  apply from: "./gradle/dependencies.gradle"
 
   repositories {
     maven { url "https://repo.spring.io/plugins-release" }
@@ -57,6 +57,21 @@ subprojects {
 	}
 
 	task allDeps(type: DependencyReportTask) {}
+	
+	tasks.withType(JavaCompile) {
+    	options.compilerArgs += "--enable-preview"
+	}
+	tasks.withType(Test) {
+	    jvmArgs += "--enable-preview"
+	}
+	tasks.withType(JavaExec) {
+	    jvmArgs += "--enable-preview"
+	}
+
+	javadoc.options {
+	    addBooleanOption('-enable-preview', true)
+	    addStringOption('-release', '14')
+	}
 }
 
 jacocoTestReport {
