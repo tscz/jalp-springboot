@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tscz.spring.platform.exception.ResourceNotFoundException;
 
 @RestController
@@ -22,34 +23,38 @@ public class VocableController {
 	@Autowired
 	private VocableRepository vocableRepository;
 
+	@Autowired
+	private ObjectMapper mapper;
+
 	@GetMapping("/vocabulary")
 	public List<Vocable> getVocabulary() {
 		return vocableRepository.findAll();
 	}
 
 	@PostMapping("/vocabulary/{value}")
-	public Vocable addVocable(@PathVariable String value, @Valid @RequestBody Vocable vocable) {
-		return vocableRepository.save(vocable);
+	public Vocable addVocable(@PathVariable String value, @Valid @RequestBody VocableTo vocable) {
+
+		return vocableRepository.save(mapper.convertValue(vocable, Vocable.class));
 	}
 
 	@PutMapping("/vocabulary/{value}")
-	public Vocable updateVocable(@PathVariable String value, @Valid @RequestBody Vocable vocable) {
+	public VocableTo updateVocable(@PathVariable String value, @Valid @RequestBody VocableTo vocable) {
 		if (!vocableRepository.findByValue(value).isEmpty()) {
-			throw new ResourceNotFoundException("Vocable not found with id " + value);
+			throw new ResourceNotFoundException("Vocable not found with value " + value);
 		}
 
-		return addVocable(value, vocable);
+		return mapper.convertValue(addVocable(value, vocable), VocableTo.class);
 	}
 
 	@DeleteMapping("/vocabulary/{value}")
-	public ResponseEntity<?> deleteVocable(@PathVariable String value) {
-		List<Vocable> vocable = vocableRepository.findByValue(value);
+	public ResponseEntity<Void> deleteVocable(@PathVariable long id) {
+		var vocable = vocableRepository.findById(id);
 
 		if (vocable.isEmpty()) {
-			throw new ResourceNotFoundException("Vocable not found with id " + value);
+			throw new ResourceNotFoundException("Vocable not found with id " + id);
 		}
 
-		vocableRepository.delete(vocable.get(0));
+		vocableRepository.delete(vocable.orElseThrow());
 		return ResponseEntity.ok().build();
 
 	}
