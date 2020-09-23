@@ -1,7 +1,6 @@
 ext {
   versions = [
-	spring_boot_platform: "0.0.7-SNAPSHOT",
-	spring_boot: "2.3.1.RELEASE",
+	spring_boot_platform: "0.0.8-SNAPSHOT",
   ]
   testVersions = [
   	jsonassert: "2.8.0",
@@ -11,7 +10,8 @@ ext {
   pluginVersions = [
     asciidoc: "2.3.0",
     coveralls: "2.8.4",
-    jacoco: "0.8.4",
+    jacoco: "0.8.6",
+    spring_boot: "2.3.1.RELEASE"
   ]
   libraries = [
     spring_boot_platform_starter: "com.github.tscz.spring.platform:spring-boot-platform-starter:${versions.spring_boot_platform}",
@@ -19,7 +19,7 @@ ext {
   testLibraries = [  ]
   gradlePlugins = [
 	  asciidoc: "org.asciidoctor:asciidoctor-gradle-jvm:${pluginVersions.asciidoc}",
-    coveralls: "gradle.plugin.com.github.kt3k.coveralls:coveralls-gradle-plugin:${pluginVersions.coveralls}",
-	  spring_boot: "org.springframework.boot:spring-boot-gradle-plugin:${versions.spring_boot}",	
+      coveralls: "gradle.plugin.com.github.kt3k.coveralls:coveralls-gradle-plugin:${pluginVersions.coveralls}",
+	  spring_boot: "org.springframework.boot:spring-boot-gradle-plugin:${pluginVersions.spring_boot}",	
   ]
 }

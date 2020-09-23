@@ -45,6 +45,10 @@ subprojects {
 	apply plugin: "java"
 	apply plugin: "jacoco"
 	
+	jacoco {
+        toolVersion = pluginVersions.jacoco
+    }
+    
 	jacocoTestReport {
         reports {
             xml.enabled = true // coveralls plugin depends on xml format report
@@ -70,7 +74,7 @@ subprojects {
 
 	javadoc.options {
 	    addBooleanOption('-enable-preview', true)
-	    addStringOption('-release', '14')
+	    addStringOption('-release', '15')
 	}
 }
 
@@ -95,6 +99,10 @@ task jacocoRootReport(type: JacocoReport) {
     reports {
         html.enabled = true
         xml.enabled = true
+    }
+    
+    jacoco {
+        toolVersion = pluginVersions.jacoco
     }
 }
 
