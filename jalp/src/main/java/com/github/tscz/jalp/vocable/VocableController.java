@@ -31,10 +31,11 @@ public class VocableController {
 		return vocableRepository.findAll();
 	}
 
-	@PostMapping("/vocabulary/{value}")
-	public Vocable addVocable(@PathVariable String value, @Valid @RequestBody VocableTo vocable) {
+	@PostMapping("/vocabulary")
+	public VocableTo addVocable(@Valid @RequestBody VocableTo vocable) {
 
-		return vocableRepository.save(mapper.convertValue(vocable, Vocable.class));
+		return mapper.convertValue(//
+				vocableRepository.save(mapper.convertValue(vocable, Vocable.class)), VocableTo.class);
 	}
 
 	@PutMapping("/vocabulary/{value}")
@@ -43,7 +44,7 @@ public class VocableController {
 			throw new ResourceNotFoundException("Vocable not found with value " + value);
 		}
 
-		return mapper.convertValue(addVocable(value, vocable), VocableTo.class);
+		return addVocable(vocable);
 	}
 
 	@DeleteMapping("/vocabulary/{value}")
