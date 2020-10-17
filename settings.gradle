@@ -1,3 +1,7 @@
 rootProject.name = 'jalp-complete'
 
+if( file('../spring-boot-platform').exists()) {
+  includeBuild '../spring-boot-platform'
+}
+
 include 'jalp'

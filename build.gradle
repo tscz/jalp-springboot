@@ -3,6 +3,7 @@ apply plugin: 'jacoco'
 apply plugin: 'java'
 apply plugin: 'org.asciidoctor.jvm.convert'
 apply plugin: 'org.asciidoctor.jvm.pdf'
+apply plugin: 'eclipse'
 
 buildscript {
   apply from: "./gradle/dependencies.gradle"
@@ -44,7 +45,8 @@ subprojects {
 	
 	apply plugin: "java"
 	apply plugin: "jacoco"
-	
+	apply plugin: "eclipse"	
+
 	jacoco {
         toolVersion = pluginVersions.jacoco
     }
